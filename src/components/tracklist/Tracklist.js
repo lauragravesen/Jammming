@@ -5,7 +5,7 @@ function Tracklist (props) {
     return (
     <div className={styles.TrackList}>
         {props.userSearchResults.map((track) => (
-            <Track/>
+            <Track track={track} key={track.id}/>
         ))}
     </div>
     );

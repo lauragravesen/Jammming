@@ -3,15 +3,19 @@ import styles from './Track.module.css';
 
 function Track (props) {
   function renderAction() {
-    return <button className="TrackAction">{props.isRemoved ? "-" : "+"}</button>
+    return  (
+    <button className="TrackAction">{props.isRemoved ? "-" : "+"}</button>
+    );
   }
+  return (
     <div className={styles.Track}>
     <div className={styles.TrackInformation}>
-      <h3> track name will go here </h3>
-      <p>track artist will go here  track album will go here</p>
+      <h3>{props.track.name}</h3>
+      <p>{props.track.artist} | {props.track.album}</p>
     </div>
-    <button className={styles.TrackAction}> + or - will go here </button>
+    <button className={styles.TrackAction}></button>
   </div>
+  );
 }
 
 export default Track;
