@@ -15,15 +15,17 @@ html {
 
 h1 {
   padding: .77rem 0;
-  background-color: #4D009A;
+  margin: 0;
+  background-color: #790d8f;
   text-align: center;
   font-family: 'DM Sans', sans-serif;
   font-size: 1.88rem;
   color: #fff;
+  
 }
 
 h1 .highlight {
-  color: #8440CC;
+  color: #e44edf;
 }
 
 h2 {
@@ -43,14 +45,10 @@ h2 {
   color: #fff;
 }
 
-.App-playlist {
+.AppPlaylist {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-.App-searchBar {
-  margin: 0 44%;
 }
 
 @media only screen and (max-width: 1020px) {

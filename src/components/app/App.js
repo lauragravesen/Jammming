@@ -1,32 +1,38 @@
-import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import styles from './App.module.css';
+import SearchResults from '../search_results/SearchResults';
 
-const clientID = 'd13c3fff478c4d6185686f672a64ae44';
-const clientSecret = '9c62504efb1640acba32d1dd3d259057';
 
-function App(props) {
-  const [ searchInput, setSearchInput] = useState('');
-
-  return (
-      <div>
-        <h1>Ja<span className="highlight">mmm</span>ing</h1>
-        <div className="App">
-          <div className="App-playlist">
-            <div className="App-searchBar">
-              <form>
-                <input type="input" placeholder='Search for song' onKeyDown={event => {
-                  if (event.key == 'Enter') {
-                    console.log('Pressed enter');
-                  }
-                }}
-                onChange={event => setSearchInput(event.target.value)}
-                ></input>
-              </form>
-              <button onClick={event => {console.log('Clicked Button')}}>Search</button>
-            </div>
-          </div>
-        </div>
+function App() {
+  const [searchResults, setSearchResults] = useState([
+    {
+    name: "track name 1",
+    artist: "artist name 1",
+    album: "album name 1",
+    id: 1,
+  },
+  {
+    name: "track name 2",
+    artist: "artist name 2",
+    album: "album name 2",
+    id: 2,
+  },
+  {
+    name: "track name 3",
+    artist: "artist name 3",
+    album: "album name 3",
+    id: 2,
+  }
+]);
+return (
+    <div>
+    <h1>Ja<span className={styles.highlight}>mmm</span>ing</h1>
+    <div className={styles.App}>
+      <div className={styles.AppPlaylist}>
+        <SearchResults userSearchResults={searchResults}/>
       </div>
+    </div>
+  </div>
   );
 }
 
