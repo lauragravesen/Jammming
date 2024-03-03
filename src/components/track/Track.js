@@ -25,6 +25,7 @@ function Track(props) {
   return (
     <div className={styles.Track}>
       <div className={styles.TrackInformation}>
+        <img>{props.track.album.images}</img>
         <h3>{props.track.name}</h3>
         <p>{props.track.artist} | {props.track.album}</p>
       </div>

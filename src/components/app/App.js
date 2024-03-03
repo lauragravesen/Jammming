@@ -23,21 +23,21 @@ function App(props) {
   const [playlistName, setPlaylistName] = useState("Example Playlist Name");
   const [playlistTracks, setPlaylistTracks] = useState([
     {
-      name: "Example Playlist Name 1",
-      artist: "Example Playlist Artist 1",
-      album: "Example Playlist Album 1",
+      name: "Example Track Name 1",
+      artist: "Example Track Artist 1",
+      album: "Example Track Album 1",
       id: 11,
     },
     {
-      name: "Example Playlist Name 2",
-      artist: "Example Playlist Artist 2",
-      album: "Example Playlist Album 2",
+      name: "Example Track Name 2",
+      artist: "Example Track Artist 2",
+      album: "Example Track Album 2",
       id: 22,
     },
     {
-      name: "Example Playlist Name 3",
-      artist: "Example Playlist Artist 3",
-      album: "Example Playlist Album 3",
+      name: "Example Track Name 3",
+      artist: "Example Track Artist 3",
+      album: "Example Track Album 3",
       id: 33,
     },
   ]);
@@ -64,7 +64,7 @@ function App(props) {
   function savePlaylist() {
     const trackURIs = playlistTracks.map((t) => t.uri);
     Spotify.savePlaylist(playlistName, trackURIs).then(() => {
-      updatePlaylistName("New Playlist");
+      updatePlaylistName("New playlist");
       setPlaylistTracks([]);
     });
   }
