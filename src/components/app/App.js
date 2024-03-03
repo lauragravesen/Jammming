@@ -3,48 +3,42 @@ import styles from './App.module.css';
 import SearchResults from '../search_results/SearchResults';
 import Playlist from '../playlist/Playlist';
 import SearchBar from '../search_bar/SearchBar';
-import { Spotify } from '../../util/Spotify';
+import { Spotify } from '../../util/spotify/Spotify';
 
 function App(props) {
   const [searchResults, setSearchResults] = useState([
     {
-      name: "track name 1",
-      artist: "artist name 1",
-      album: "album name 1",
+      name: "Example Track Name 1",
+      artist: "Example Track Artist 1",
+      album: "Example Track Album 1",
       id: 1,
     },
     {
-      name: "track name 2",
-      artist: "artist name 2",
-      album: "album name 2",
+      name: "Example Track Name 2",
+      artist: "Example Track Artist 2",
+      album: "Example Track Album 2",
       id: 2,
     },
-    {
-      name: "track name 3",
-      artist: "artist name 3",
-      album: "album name 3",
-      id: 3,
-    }
   ]);
-  const [playlistName, setPlaylistName] = useState("Example playlist name");
+  const [playlistName, setPlaylistName] = useState("Example Playlist Name");
   const [playlistTracks, setPlaylistTracks] = useState([
     {
-      name: "Example | Name 1",
-      artist: "Example | Artist 1",
-      album: "Example | Album 1",
-      id: 1,
+      name: "Example Playlist Name 1",
+      artist: "Example Playlist Artist 1",
+      album: "Example Playlist Album 1",
+      id: 11,
     },
     {
-      name: "Example | Name 2",
-      artist: "Example | Artist 2",
-      album: "Example | Album 2",
-      id: 2,
+      name: "Example Playlist Name 2",
+      artist: "Example Playlist Artist 2",
+      album: "Example Playlist Album 2",
+      id: 22,
     },
     {
-      name: "Example | Name 3",
-      artist: "Example | Artist 3",
-      album: "Example | Album 3",
-      id: 3,
+      name: "Example Playlist Name 3",
+      artist: "Example Playlist Artist 3",
+      album: "Example Playlist Album 3",
+      id: 33,
     },
   ]);
 
@@ -63,16 +57,20 @@ function App(props) {
     setPlaylistTracks(existingTrack);
   }
 
-  function updatePlaylist(name) {
+  function updatePlaylistName(name) {
     setPlaylistName(name);
   }
 
   function savePlaylist() {
     const trackURIs = playlistTracks.map((t) => t.uri);
+    Spotify.savePlaylist(playlistName, trackURIs).then(() => {
+      updatePlaylistName("New Playlist");
+      setPlaylistTracks([]);
+    });
   }
 
   function search(term) {
-    Spotify.search(term).then((result) => searchResults(result));
+    Spotify.search(term).then((result) => setSearchResults(result));
     console.log(term);
   }
 
@@ -89,7 +87,7 @@ function App(props) {
           playlistName={playlistName} 
           playlistTracks={playlistTracks} 
           onRemove={removeTrack} 
-          onNameChange={updatePlaylist} 
+          onNameChange={updatePlaylistName} 
           onSave={savePlaylist} />
         </div>
       </div>

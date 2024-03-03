@@ -5,7 +5,10 @@ function SearchResults (props) {
     return (
     <div className={styles.SearchResults}>
         <h2>Results</h2>
-        <TrackList userSearchResults={props.userSearchResults} isRemoved={false} onAdd={props.onAdd}/>
+        <TrackList 
+        userSearchResults={props.userSearchResults} 
+        isRemoved={false} 
+        onAdd={props.onAdd}/>
     </div>
     );
 }
